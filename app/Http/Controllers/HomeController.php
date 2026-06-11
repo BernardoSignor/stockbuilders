@@ -12,6 +12,8 @@ class HomeController extends Controller
     public function index(Request $request): View
     {
         $categories = Category::orderBy('name')->get();
+        $availableProducts = Product::where('quantity', '>', 0)->count();
+        $lowStockProducts = Product::whereBetween('quantity', [1, 10])->count();
 
         $products = Product::query()
             ->with('category')
@@ -25,6 +27,11 @@ class HomeController extends Controller
             ->orderBy('name')
             ->get();
 
-        return view('welcome', compact('products', 'categories'));
+        return view('welcome', compact(
+            'products',
+            'categories',
+            'availableProducts',
+            'lowStockProducts'
+        ));
     }
 }

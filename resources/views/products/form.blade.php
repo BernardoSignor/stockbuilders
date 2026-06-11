@@ -1,5 +1,5 @@
 @if ($errors->any())
-    <div class="bg-red-100 text-red-800 p-3 rounded mb-4">
+    <div class="mb-4 rounded border border-red-900/50 bg-red-950/40 p-3 text-red-200">
         <ul class="list-inside list-disc">
             @foreach ($errors->all() as $error)
                 <li>{{ $error }}</li>
@@ -39,7 +39,7 @@
 
     <div>
         <x-input-label for="category_id" value="Categoria" />
-        <select id="category_id" name="category_id" class="mt-1 block w-full border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm">
+        <select id="category_id" name="category_id" class="mt-1 block w-full rounded-md border-gray-700 bg-gray-950 text-gray-100 shadow-sm focus:border-purple-500 focus:ring-purple-500">
             <option value="">Selecione</option>
             @foreach ($categories as $category)
                 <option value="{{ $category->id }}" @selected(old('category_id', $product?->category_id) == $category->id)>
@@ -53,11 +53,11 @@
         <x-input-label for="image" value="Imagem" />
 
         <div class="mt-1 flex flex-wrap items-center gap-2">
-            <label for="image" class="inline-flex cursor-pointer items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 dark:border-gray-500 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700">
+            <label for="image" class="inline-flex cursor-pointer items-center rounded-md border border-purple-900/50 bg-gray-950 px-4 py-2 text-sm font-medium text-gray-200 shadow-sm hover:bg-gray-800">
                 Escolher imagem
             </label>
 
-            <span x-text="imageName" class="text-sm text-gray-700 dark:text-gray-300"></span>
+            <span x-text="imageName" class="text-sm text-gray-300"></span>
         </div>
 
         <input
@@ -75,7 +75,7 @@
             {{ $button }}
         </x-primary-button>
 
-        <a href="{{ route('products.index') }}" class="inline-flex items-center px-4 py-2 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-500 rounded-md font-semibold text-xs text-gray-700 dark:text-gray-300 uppercase tracking-widest shadow-sm hover:bg-gray-50 dark:hover:bg-gray-700">
+        <a href="{{ route('products.index') }}" class="inline-flex items-center rounded-md border border-purple-900/50 bg-gray-950 px-4 py-2 text-xs font-semibold uppercase tracking-widest text-gray-200 shadow-sm hover:bg-gray-800">
             Voltar
         </a>
     </div>

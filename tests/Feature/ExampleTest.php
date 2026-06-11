@@ -1,7 +1,10 @@
 <?php
 
-test('home redirects to dashboard', function () {
+test('main route shows public stock page', function () {
     $response = $this->get('/');
 
-    $response->assertRedirect('/dashboard');
+    $response
+        ->assertSuccessful()
+        ->assertSee('StockBuilderS')
+        ->assertSee('Area publica');
 });

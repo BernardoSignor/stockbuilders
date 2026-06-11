@@ -25,9 +25,11 @@ test('authenticated user can see dashboard information', function () {
     $response
         ->assertSuccessful()
         ->assertSee('Bem-vindo, Bernardo Signor!')
+        ->assertSee('Area administrativa')
         ->assertSee('Total de produtos')
         ->assertSee('Categorias')
         ->assertSee('Estoque baixo')
+        ->assertSee('Estoque por categoria')
         ->assertSee('Coca-Cola 2L')
         ->assertSee('Refrigerantes');
 });

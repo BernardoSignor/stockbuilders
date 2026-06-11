@@ -1,6 +1,6 @@
 <x-app-layout>
-    <div class="w-full bg-white dark:bg-gray-800 p-6 rounded-lg shadow mx-auto max-w-xl">
-        <h1 class="text-2xl font-bold mb-6 text-gray-900 dark:text-white">Editar Categoria</h1>
+    <div class="mx-auto w-full max-w-xl rounded-lg border border-purple-950/60 bg-gray-900 p-6 shadow-sm">
+        <h1 class="mb-6 text-2xl font-bold text-white">Editar Categoria</h1>
 
         @include('categories.form', [
             'action' => route('categories.update', $category),

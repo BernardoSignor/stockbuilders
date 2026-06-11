@@ -1,47 +1,47 @@
 <x-app-layout>
-    <div class="w-full bg-white dark:bg-gray-800 p-6 rounded-lg shadow mx-auto">
+    <div class="mx-auto w-full rounded-lg border border-purple-950/60 bg-gray-900 p-6 shadow-sm">
         <div class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between mb-6">
-            <h1 class="text-2xl font-bold text-gray-900 dark:text-white">Categorias</h1>
+            <h1 class="text-2xl font-bold text-white">Categorias</h1>
 
-            <a href="{{ route('categories.create') }}" class="inline-flex items-center px-4 py-2 bg-blue-600 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-blue-700">
+            <a href="{{ route('categories.create') }}" class="inline-flex items-center rounded-md border border-transparent bg-purple-700 px-4 py-2 text-xs font-semibold uppercase tracking-widest text-white hover:bg-purple-600">
                 Cadastrar
             </a>
         </div>
 
         @if (session('success'))
-            <div class="bg-green-100 text-green-800 p-3 rounded mb-4">
+            <div class="mb-4 rounded border border-green-900/50 bg-green-950/40 p-3 text-green-200">
                 {{ session('success') }}
             </div>
         @endif
 
         @if (session('error'))
-            <div class="bg-red-100 text-red-800 p-3 rounded mb-4">
+            <div class="mb-4 rounded border border-red-900/50 bg-red-950/40 p-3 text-red-200">
                 {{ session('error') }}
             </div>
         @endif
 
-        <div class="overflow-x-auto">
-            <table class="w-full table-auto border-collapse border border-gray-300 dark:border-gray-600">
+        <div class="overflow-x-auto rounded-md border border-gray-800">
+            <table class="w-full table-auto border-collapse">
                 <thead>
-                    <tr class="bg-gray-100 dark:bg-gray-700">
-                        <th class="px-4 py-2 text-left text-gray-700 dark:text-gray-300 border border-gray-300 dark:border-gray-600">Nome</th>
-                        <th class="px-4 py-2 text-left text-gray-700 dark:text-gray-300 border border-gray-300 dark:border-gray-600">Produtos</th>
-                        <th class="px-4 py-2 text-left text-gray-700 dark:text-gray-300 border border-gray-300 dark:border-gray-600">Acoes</th>
+                    <tr class="bg-gray-950">
+                        <th class="border-b border-gray-800 px-4 py-3 text-left text-gray-200">Nome</th>
+                        <th class="border-b border-gray-800 px-4 py-3 text-left text-gray-200">Produtos</th>
+                        <th class="border-b border-gray-800 px-4 py-3 text-left text-gray-200">Acoes</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody class="divide-y divide-gray-800">
                     @forelse ($categories as $category)
-                        <tr class="border-b border-gray-300 dark:border-gray-600">
-                            <td class="px-4 py-2 text-gray-900 dark:text-white">{{ $category->name }}</td>
-                            <td class="px-4 py-2 text-gray-900 dark:text-white">{{ $category->products_count }}</td>
-                            <td class="px-4 py-2">
+                        <tr class="hover:bg-gray-800/60">
+                            <td class="px-4 py-3 font-medium text-white">{{ $category->name }}</td>
+                            <td class="px-4 py-3 text-gray-300">{{ $category->products_count }}</td>
+                            <td class="px-4 py-3">
                                 <div class="flex flex-wrap gap-2">
-                                    <a href="{{ route('categories.edit', $category) }}" class="bg-gray-600 text-white px-3 py-1 rounded hover:bg-gray-700">Editar</a>
+                                    <a href="{{ route('categories.edit', $category) }}" class="rounded bg-gray-700 px-3 py-1 text-white hover:bg-gray-600">Editar</a>
 
                                     <form method="POST" action="{{ route('categories.destroy', $category) }}">
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit" class="bg-red-600 text-white px-3 py-1 rounded hover:bg-red-700">
+                                        <button type="submit" class="rounded bg-red-700 px-3 py-1 text-white hover:bg-red-600">
                                             Excluir
                                         </button>
                                     </form>
@@ -50,7 +50,7 @@
                         </tr>
                     @empty
                         <tr>
-                            <td colspan="3" class="px-4 py-6 text-center text-gray-500 dark:text-gray-300">Nenhuma categoria cadastrada.</td>
+                            <td colspan="3" class="px-4 py-6 text-center text-gray-400">Nenhuma categoria cadastrada.</td>
                         </tr>
                     @endforelse
                 </tbody>

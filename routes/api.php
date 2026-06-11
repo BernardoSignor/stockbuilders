@@ -6,9 +6,23 @@ use Illuminate\Support\Facades\Route;
 
 Route::post('loginapi', [ProductsControllerApi::class, 'loginapi']);
 
-Route::get('products', [ProductsControllerApi::class, 'index'])
-    ->middleware('auth:sanctum');
+Route::prefix('v1')->group(function () {
+    Route::post('login', [ProductsControllerApi::class, 'login']);
 
-Route::get('/user', function (Request $request) {
-    return $request->user();
-})->middleware('auth:sanctum');
+    Route::middleware('auth:sanctum')->group(function () {
+        Route::get('products', [ProductsControllerApi::class, 'index']);
+        Route::get('products/{product}', [ProductsControllerApi::class, 'show']);
+
+        Route::get('user', function (Request $request) {
+            return $request->user();
+        });
+    });
+});
+
+Route::middleware('auth:sanctum')->group(function () {
+    Route::get('products', [ProductsControllerApi::class, 'index']);
+
+    Route::get('/user', function (Request $request) {
+        return $request->user();
+    });
+});

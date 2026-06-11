@@ -1,6 +1,6 @@
 <x-app-layout>
-    <div class="w-full bg-white dark:bg-gray-800 p-6 rounded-lg shadow mx-auto">
-        <h1 class="text-2xl font-bold mb-6 text-gray-900 dark:text-white">Relatorio de Produtos</h1>
+    <div class="mx-auto w-full rounded-lg border border-purple-950/60 bg-gray-900 p-6 shadow-sm">
+        <h1 class="mb-6 text-2xl font-bold text-white">Relatorio de Produtos</h1>
 
         <form method="GET" action="{{ route('products.report.pdf') }}" class="space-y-4">
             <div>
@@ -10,7 +10,7 @@
 
             <div>
                 <x-input-label for="category_id" value="Categoria" />
-                <select id="category_id" name="category_id" class="mt-1 block w-full border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm">
+                <select id="category_id" name="category_id" class="mt-1 block w-full rounded-md border-gray-700 bg-gray-950 text-gray-100 shadow-sm focus:border-purple-500 focus:ring-purple-500">
                     <option value="">Todas</option>
                     @foreach ($categories as $category)
                         <option value="{{ $category->id }}" @selected(request('category_id') == $category->id)>
@@ -35,7 +35,7 @@
             <div class="flex gap-2">
                 <x-primary-button>Exportar PDF</x-primary-button>
 
-                <a href="{{ route('products.index') }}" class="inline-flex items-center px-4 py-2 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-500 rounded-md font-semibold text-xs text-gray-700 dark:text-gray-300 uppercase tracking-widest shadow-sm hover:bg-gray-50 dark:hover:bg-gray-700">
+                <a href="{{ route('products.index') }}" class="inline-flex items-center rounded-md border border-purple-900/50 bg-gray-950 px-4 py-2 text-xs font-semibold uppercase tracking-widest text-gray-200 shadow-sm hover:bg-gray-800">
                     Voltar
                 </a>
             </div>
